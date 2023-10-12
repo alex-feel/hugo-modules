@@ -1,3 +1,3 @@
-module github.com/gethugothemes/hugo-modules/tab
+module github.com/alex-feel/hugo-modules/tab
 
 go 1.20

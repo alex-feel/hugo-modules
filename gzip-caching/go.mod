@@ -1,3 +1,3 @@
-module github.com/gethugothemes/hugo-modules/gzip-caching
+module github.com/alex-feel/hugo-modules/gzip-caching
 
 go 1.19

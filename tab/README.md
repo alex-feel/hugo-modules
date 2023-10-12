@@ -6,7 +6,7 @@ Add the following code to your module list in the `config/_default/module.toml` 
 
 ```toml
 [[imports]]
-path = "github.com/gethugothemes/hugo-modules/tab"
+path = "github.com/alex-feel/hugo-modules/tab"
 ```
 
 Add the following code to your `asstes/scss/main.scss` or `asstes/scss/style.scss` file.

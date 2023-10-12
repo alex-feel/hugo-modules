@@ -1,3 +1,3 @@
-module github.com/gethugothemes/hugo-modules/pwa
+module github.com/alex-feel/hugo-modules/pwa
 
 go 1.19

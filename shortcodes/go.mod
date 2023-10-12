@@ -1,3 +1,3 @@
-module github.com/gethugothemes/hugo-modules/shortcodes
+module github.com/alex-feel/hugo-modules/shortcodes
 
 go 1.19

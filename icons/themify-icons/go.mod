@@ -1,3 +1,3 @@
-module github.com/gethugothemes/hugo-modules/icons/themify-icons
+module github.com/alex-feel/hugo-modules/icons/themify-icons
 
 go 1.19

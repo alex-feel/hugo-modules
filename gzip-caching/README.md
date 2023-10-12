@@ -6,5 +6,5 @@ Add the following code to your module list in the `config/_default/module.toml` 
 
 ```toml
 [[imports]]
-path = "github.com/gethugothemes/hugo-modules/gzip-caching"
+path = "github.com/alex-feel/hugo-modules/gzip-caching"
 ```

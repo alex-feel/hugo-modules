@@ -1,3 +1,3 @@
-module github.com/gethugothemes/hugo-modules/icons/font-awesome
+module github.com/alex-feel/hugo-modules/icons/font-awesome
 
 go 1.19

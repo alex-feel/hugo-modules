@@ -1,3 +1,3 @@
-module github.com/gethugothemes/hugo-modules/seo-tools/google-tag-manager
+module github.com/alex-feel/hugo-modules/seo-tools/google-tag-manager
 
 go 1.19

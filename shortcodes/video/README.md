@@ -8,7 +8,7 @@ Add the following code to your module list in the `config/_default/module.toml` 
 
 ```toml
 [[imports]]
-path = "github.com/gethugothemes/hugo-modules/shortcodes/video"
+path = "github.com/alex-feel/hugo-modules/shortcodes/video"
 ```
 
 <hr>

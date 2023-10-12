@@ -1,3 +1,3 @@
-module github.com/gethugothemes/hugo-modules/shortcodes/button
+module github.com/alex-feel/hugo-modules/shortcodes/button
 
 go 1.20

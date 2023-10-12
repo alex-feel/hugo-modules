@@ -1,3 +1,3 @@
-module github.com/gethugothemes/hugo-modules/seo-tools/basic-seo
+module github.com/alex-feel/hugo-modules/seo-tools/basic-seo
 
 go 1.19

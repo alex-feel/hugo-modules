@@ -6,7 +6,7 @@ Add the following code to your module list in the `config/_default/module.toml` 
 
 ```toml
 [[imports]]
-path = "github.com/gethugothemes/hugo-modules/icons/themify-icons"
+path = "github.com/alex-feel/hugo-modules/icons/themify-icons"
 ```
 
 Add the following code to your CSS plugins list in the `config.toml` file.

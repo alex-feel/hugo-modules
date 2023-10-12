@@ -1,3 +1,3 @@
-module github.com/gethugothemes/hugo-modules/accordion
+module github.com/alex-feel/hugo-modules/accordion
 
 go 1.20
