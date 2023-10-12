@@ -66,12 +66,20 @@ Call it, as a partial in your theme.
 {{ partialCached "favicon" . }}
 ```
 
-Define the logo in the `config/_default/params.toml` file.
+Place your favicon files within the `static` directory of your Hugo project. They will be automatically copied to the root of the site during the build process.
+
+Add the following parameters to your `config/_default/params.toml` file to set specific color values for various favicon functionalities.
 
 ```toml
-# favicon
-favicon = "images/favicon.png"
+# Theme Colors for Favicon
+safari_theme_color = "#color"           # Used for <link rel="mask-icon">
+ms_application_tile_color = "#color"    # Used for <meta name="msapplication-TileColor">
+chrome_theme_color = "#color"           # Used for <meta name="theme-color">
 ```
+
+Replace `#color` with your desired color values. The favicon partial will automatically add the appropriate meta tags and favicon links if the files exist within the static directory.
+
+Ensure the files like `apple-touch-icon.png`, `browserconfig.xml`, `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `mstile-144x144.png`, `mstile-150x150.png`, `mstile-310x150.png`, `mstile-310x310.png`, `mstile-70x70.png`, and `safari-pinned-tab.svg` exist in the static folder for them to be included in the generated HTML.
 
 ---
 
