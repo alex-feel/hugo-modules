@@ -9,13 +9,13 @@ Add the following code to your module list in the `config/_default/module.toml` 
 path = "github.com/alex-feel/hugo-modules/accordion"
 ```
 
-Add the following code to your `asstes/scss/main.scss` or `asstes/scss/style.scss` file.
+Add the following code to your `assets/scss/main.scss` or `assets/scss/style.scss` file.
 
 ```scss
 @import 'accordion';
 ```
 
-Add the following code to your js plugins list in the `config.toml` file.
+Add the following code to your js plugins list in the `hugo.toml` file.
 
 ```toml
 [[params.plugins.js]]
