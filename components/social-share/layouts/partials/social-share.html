@@ -41,6 +41,7 @@
 
 
   <!-- Twitter -->
+  <!-- https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/guides/web-intent -->
   {{ if $twitter }}
     <a
       class="share-link share-twitter"
@@ -90,7 +91,7 @@
     <a
       class="share-link share-email"
       href="mailto:?subject={{ $postTitle }}&amp;body={{ $postTitle }}%20{{ $url }}"
-      target="_self"
+      target="_blank"
       rel="noopener"
       aria-label="share email">
       <span aria-hidden="true" class="share-icon">
@@ -111,7 +112,7 @@
   {{ if $reddit }}
     <a
       class="share-link share-reddit"
-      href="https://reddit.com/submit/?url={{ $url }}&amp;resubmit=true&amp;title={{ $postTitle }}"
+      href="https://reddit.com/submit/?url={{ $url }}&amp;title={{ $postTitle }}"
       target="_blank"
       rel="noopener"
       aria-label="share reddit">
@@ -130,10 +131,11 @@
 
 
   <!-- WhatsApp -->
+  <!-- https://faq.whatsapp.com/5913398998672934 -->
   {{ if $whatsapp }}
     <a
       class="share-link share-whatsapp"
-      href="whatsapp://send?text={{ $postTitle }}%20{{ $url }}"
+      href="https://wa.me/?text={{ $postTitle }}%20{{ $url }}"
       target="_blank"
       rel="noopener"
       aria-label="share whatsapp">
@@ -152,10 +154,11 @@
 
 
   <!-- Telegram -->
+  <!-- https://core.telegram.org/widgets/share -->
   {{ if $telegram }}
     <a
       class="share-link share-telegram"
-      href="https://telegram.me/share/url?text={{ $postTitle }}&amp;url={{ $url }}"
+      href="https://t.me/share/url?url={{ $url }}&text={{ $postTitle }}"
       target="_blank"
       rel="noopener"
       aria-label="share telegram">
