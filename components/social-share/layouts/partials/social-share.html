@@ -10,6 +10,7 @@
 {{ $telegram:= .Telegram | default true }}
 
 {{ $url := printf "%s" $context.Permalink | absLangURL }}
+{{ $postTitle := $context.Title }}
 
 
 <div class="{{ $class }}">
@@ -42,7 +43,7 @@
   {{ if $twitter }}
     <a
       class="share-link share-twitter"
-      href="https://twitter.com/intent/tweet/?text={{ .Title }}&amp;url={{ $url }}"
+      href="https://twitter.com/intent/tweet/?text={{ $postTitle }}&amp;url={{ $url }}"
       target="_blank"
       rel="noopener"
       aria-label="share twitter">
@@ -65,7 +66,7 @@
   {{ if $vk }}
     <a
       class="share-link share-vk"
-      href="https://vk.com/share.php?url={{ $url }}"
+      href="https://vk.com/share.php?url={{ $url }}&amp;title={{ $postTitle }}"
       target="_blank"
       rel="noopener"
       aria-label="share vk">
@@ -87,7 +88,7 @@
   {{ if $email }}
     <a
       class="share-link share-email"
-      href="mailto:?subject={{ .Title }}&amp;body={{ $url }}"
+      href="mailto:?subject={{ $postTitle }}&amp;body={{ $postTitle }}%20{{ $url }}"
       target="_self"
       rel="noopener"
       aria-label="share email">
@@ -109,7 +110,7 @@
   {{ if $reddit }}
     <a
       class="share-link share-reddit"
-      href="https://reddit.com/submit/?url={{ $url }}&amp;resubmit=true&amp;title={{ .Title }}"
+      href="https://reddit.com/submit/?url={{ $url }}&amp;resubmit=true&amp;title={{ $postTitle }}"
       target="_blank"
       rel="noopener"
       aria-label="share reddit">
@@ -131,7 +132,7 @@
   {{ if $whatsapp }}
     <a
       class="share-link share-whatsapp"
-      href="whatsapp://send?text={{ .Title }}%20{{ $url }}"
+      href="whatsapp://send?text={{ $postTitle }}%20{{ $url }}"
       target="_blank"
       rel="noopener"
       aria-label="share whatsapp">
@@ -153,7 +154,7 @@
   {{ if $telegram }}
     <a
       class="share-link share-telegram"
-      href="https://telegram.me/share/url?text={{ .Title }}&amp;url={{ $url }}"
+      href="https://telegram.me/share/url?text={{ $postTitle }}&amp;url={{ $url }}"
       target="_blank"
       rel="noopener"
       aria-label="share telegram">
