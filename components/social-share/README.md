@@ -28,6 +28,7 @@ Available parameters:
 * `Title`: share title
 * `Facebook`: share facebook | default true
 * `Twitter`: share twitter | default true
+* `VK`: share vk | default true
 * `Email`: share Email | default true
 * `Reddit`: share reddit | default true
 * `Whatsapp`: share whatsapp | default true
