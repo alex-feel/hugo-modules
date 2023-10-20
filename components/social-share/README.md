@@ -9,7 +9,7 @@ Add the following code to your module list in the `config/_default/module.toml` 
 path = "github.com/alex-feel/hugo-modules/components/social-share"
 ```
 
-Add the following code to your `asstes/scss/main.scss` or `asstes/scss/style.scss` file.
+Add the following code to your `assets/scss/main.scss` or `assets/scss/style.scss` file.
 
 ```scss
 @import 'social-share';
@@ -33,8 +33,28 @@ Available parameters:
 * `Reddit`: share reddit | default true
 * `Whatsapp`: share whatsapp | default true
 * `Telegram`: share telegram | default true
+* `ImageURL` URL of the image to share
 
 ```html
 <!-- social share -->
-{{ partial "social-share.html" (dict "Context" .) }}
+{{ partial "social-share" (dict "Context" .) }}
+```
+
+or 
+
+```html
+<!-- social share -->
+{{ partial "social-share" (dict "Context" $page "Title" (i18n "share")) }}
+```
+
+or 
+
+```html
+<!-- social share -->
+{{ $page := . }}
+{{ with .Resources.GetMatch (printf "%s" .Params.image) }}
+  {{ partial "social-share" (dict "Context" $page "Title" (i18n "share") "ImageURL" .Permalink) }}
+{{ else }}
+  {{ partial "social-share" (dict "Context" $page "Title" (i18n "share")) }}
+{{ end }}
 ```
