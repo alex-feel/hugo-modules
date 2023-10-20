@@ -11,6 +11,7 @@
 
 {{ $url := printf "%s" $context.Permalink | absLangURL }}
 {{ $postTitle := $context.Title }}
+{{ $imageURL := .ImageURL }}
 
 
 <div class="{{ $class }}">
@@ -66,7 +67,7 @@
   {{ if $vk }}
     <a
       class="share-link share-vk"
-      href="https://vk.com/share.php?url={{ $url }}&amp;title={{ $postTitle }}"
+      href="https://vk.com/share.php?url={{ $url }}&amp;title={{ $postTitle }}&amp;image={{ $imageURL }}"
       target="_blank"
       rel="noopener"
       aria-label="share vk">
