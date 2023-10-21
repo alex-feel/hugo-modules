@@ -34,6 +34,20 @@ Configure it in the `config/_default/params.toml` file.
 [cookies]
 enable = true
 expire_days = 2
-content = "This site uses cookies. By continuing to use this website, you agree to their use."
-button = "I Accept"
+content = "cookies_content"
+button = "cookies_button"
+```
+
+## Translation
+
+Add the translation identifiers used in `config/_default/params.toml` to your i18n files.
+
+Example for English (`en.yaml`):
+
+```yaml
+- id: cookies_content
+  translation: "This site uses cookies. By continuing to use this website, you agree to their use."
+
+- id: cookies_button
+  translation: "I Accept"
 ```
