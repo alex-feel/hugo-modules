@@ -345,9 +345,14 @@ if (hasSearchWrapper) {
     const endTime = performance.now();
 
     // count total-result and time
-    let totalResults = `<em>${filteredItemsLength}</em> results`;
+    let searchResultInfo = document.querySelector(".search-result-info");
+    let resultsTranslation = searchResultInfo.getAttribute("data-results");
+    let inTranslation = searchResultInfo.getAttribute("data-in");
+    let secondsTranslation = searchResultInfo.getAttribute("data-seconds");
+
+    let totalResults = `<em>${filteredItemsLength}</em> ${resultsTranslation}`;
     let totalTime = ((endTime - startTime) / 1000).toFixed(3);
-    totalTime = `- in <em>${totalTime}</em> seconds`;
+    totalTime = ` ${inTranslation} <em>${totalTime}</em> ${secondsTranslation}`;
 
     searchResultInfo &&
       (searchResultInfo.innerHTML =

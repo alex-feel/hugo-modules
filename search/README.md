@@ -78,6 +78,24 @@ Add the following translations to your `i18n/*.yaml` files if you use multilangu
 
 - id: empty_search_results_placeholder
   translation: Type something to search...
+
+- id: to_navigate
+  translation: to navigate
+
+- id: to_select
+  translation: to select
+
+- id: to_close
+  translation: to close
+
+- id: search_results
+  translation: results
+
+- id: search_in
+  translation: in
+
+- id: search_seconds
+  translation: seconds
 ```
 
 ---
