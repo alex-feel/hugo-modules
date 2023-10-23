@@ -56,6 +56,7 @@ if (hasSearchWrapper) {
   const description = searchWrapper.getAttribute("data-description");
   const tags = searchWrapper.getAttribute("data-tags");
   const categories = searchWrapper.getAttribute("data-categories");
+  const useGroupTitle = searchWrapper.getAttribute("data-group-title");
 
   let searchString = "";
 
@@ -307,7 +308,7 @@ if (hasSearchWrapper) {
 
       return `
 				<div class="search-result-group">
-					<p class="search-result-group-title">${item.section}</p>
+					${useGroupTitle === 'true' ? `<p class="search-result-group-title">${item.section}</p>` : ''}
 					${renderedItems}
 				</div>`;
     };

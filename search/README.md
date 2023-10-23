@@ -63,6 +63,7 @@ show_image = true
 show_description = true
 show_tags = true
 show_categories = true
+show_group_title = true
 ```
 
 ### i18n Translation
