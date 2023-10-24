@@ -200,16 +200,16 @@
         <!-- /if image size less then 500x and size not defined -->
 
         <!-- image processing for multiple device -->
-        {{ $imageFallback:= $image.Resize "1110x" }}
-        {{ $imageXL:= $image.Resize "1110x webp" }}
-        {{ $imageLG:= $image.Resize "700x webp" }}
-        {{ $imageMD:= $image.Resize "600x webp" }}
-        {{ $imageSM:= $image.Resize "545x webp" }}
+        {{ $imageFallback:= $image.Resize "1200x" }}
+        {{ $imageXL:= $image.Resize "1200x webp" }}
+        {{ $imageLG:= $image.Resize "992x webp" }}
+        {{ $imageMD:= $image.Resize "768x webp" }}
+        {{ $imageSM:= $image.Resize "576x webp" }}
         {{ if not $webp }}
-          {{ $imageXL = $image.Resize "1110x" }}
-          {{ $imageLG = $image.Resize "700x" }}
-          {{ $imageMD = $image.Resize "600x" }}
-          {{ $imageSM = $image.Resize "545x" }}
+          {{ $imageXL = $image.Resize "1200x" }}
+          {{ $imageLG = $image.Resize "992x" }}
+          {{ $imageMD = $image.Resize "768x" }}
+          {{ $imageSM = $image.Resize "576x" }}
         {{ end }}
 
 
