@@ -29,4 +29,5 @@ keywords = ["Boilerplate", "Hugo", "Themefisher", "GetHugoThemes"]
 description = "This is default meta description"
 author = "GetHugoThemes"
 image = "images/website-thumb.png" # this image will be used as fallback if a page has no image of its own
+title_suffix = "| Cool Site" # this string will be appended to the title tag
 ```

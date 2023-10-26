@@ -7,12 +7,16 @@
 
 <!-- title -->
 {{ $title := site.Title }}
+{{ $titleSuffix := site.Params.metadata.title_suffix }}
 <!-- checking page meta title -->
 {{ if .Params.meta_title }}
   {{ $title = .Params.meta_title }}
   <!-- checking page title -->
 {{ else if .Params.title }}
   {{ $title = .Params.title }}
+{{ end }}
+{{ if $titleSuffix }}
+  {{ $title = print $title " " $titleSuffix }}
 {{ end }}
 
 
