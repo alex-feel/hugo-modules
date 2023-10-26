@@ -1,4 +1,5 @@
-{{ $type:= .Get 0 }}
+{{ $type := .Get 0 }}
+{{ $title := .Get 1 }}
 
 {{ range $i, $e:= .Params }}
   {{ if eq $i "type" }}{{ $type = $e }}{{ end }}
@@ -62,7 +63,7 @@
           stroke-linejoin="round"></path>
       </svg>
     {{ end }}
-    <p>{{ $type | title }}</p>
+    <p>{{ $title | title }}</p>
   </div>
   <div class="notice-body"><p>{{ .Inner | markdownify }}</p></div>
 </div>

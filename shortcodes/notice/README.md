@@ -19,20 +19,22 @@ Add the following code to your `asstes/scss/main.scss` or `asstes/scss/style.scs
 
 ## Shortcode Implementation
 
+The shortcode accepts two parameters, the first one for the type of notice and the second one for the title of the notice.
+
 ```md
-{{< notice "note" >}}
+{{< notice "note" "Note Title" >}}
   This is a simple note.
 {{< /notice >}}
 
-{{< notice "tip" >}}
+{{< notice "tip" "Tip Title" >}}
   This is a simple tip.
 {{< /notice >}}
 
-{{< notice "info" >}}
+{{< notice "info" "Info Title" >}}
   This is a simple info.
 {{< /notice >}}
 
-{{< notice "warning" >}}
+{{< notice "warning" "Warning Title" >}}
   This is a simple warning.
 {{< /notice >}}
 ```
