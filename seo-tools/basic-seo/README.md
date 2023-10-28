@@ -32,6 +32,37 @@ image = "images/website-thumb.png" # this image will be used as fallback if a pa
 title_suffix = "| Cool Site" # this string will be appended to the title tag
 ```
 
+In your `config/_default/hugo.toml` file, specify your site's Twitter username:
+
+```toml
+# Twitter username for twitter:site meta tag
+[social]
+twitter = 'your_twitter_handle'
+```
+
+Create a `data/authors.json` file to specify the authors and their Twitter handles:
+
+```json
+{
+  "author1": {
+    "twitter": "author1_twitter_handle"
+  },
+  "author2": {
+    "twitter": "author2_twitter_handle"
+  }
+}
+```
+
+In the front matter of each page, you can specify the authors like so:
+
+```markdown
+---
+authors: ["author1", "author2"]
+---
+```
+
+With these configurations, the `twitter:creator` meta tag will be set to the Twitter handles of the authors specified in the front matter of each page. If the authors parameter is missing or invalid, or if none of the specified authors are found in `authors.json`, the `twitter:creator` meta tag will fall back to the Twitter username specified in the `hugo.toml` file.
+
 You can also specify other SEO related parameters in the front matter of each page:
 
 ```markdown

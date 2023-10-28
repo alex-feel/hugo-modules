@@ -172,6 +172,22 @@
 {{ with site.Social.twitter }}
   <meta name="twitter:site" content="@{{ . }}" />
 {{ end }}
-{{ range site.Authors }}
-  {{ with .twitter }}<meta name="twitter:creator" content="@{{ . }}" />{{ end }}
+
+{{ $authors := .Params.authors }}
+{{ $validAuthorFound := false }}
+{{ with $authors }}
+  {{ range . }}
+    {{ with index site.Data.authors . }}
+      {{ with .twitter }}
+        {{ $validAuthorFound = true }}
+        <meta name="twitter:creator" content="@{{ . }}" />
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if not $validAuthorFound }}
+  {{ with site.Social.twitter }}
+    <meta name="twitter:creator" content="@{{ . }}" />
+  {{ end }}
 {{ end }}
