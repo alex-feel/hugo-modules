@@ -164,7 +164,7 @@
 <!-- ######### opengraph others meta ############## -->
 <meta property="og:title" content="{{ $title }}" />
 <meta property="og:description" content="{{ $description }}" />
-<meta property="og:type" content="{{ with .Params.meta_type }}{{ if or (eq . "article") (eq . "profile") }}{{ . }}{{ else }}website{{ end }}{{ else }}website{{ end }}" />
+<meta property="og:type" content="website" />
 <meta property="og:url" content="{{ .Permalink }}" />
 
 <!-- ########## twitter others meta ############### -->
