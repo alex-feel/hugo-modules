@@ -143,11 +143,7 @@
       {{ if (and (gt $imageWidth 144) (gt $imageHeight 144)) }}
         <meta property="og:image" content="{{ $image.Permalink }}" />
         <meta name="twitter:image" content="{{ $image.Permalink }}" />
-        <meta
-          name="twitter:card"
-          content="summary{{ if (and (gt $imageWidth 300) (gt $imageHeight 157) (not (eq $imageWidth $imageHeight))) }}
-            _large_image
-          {{ end }}" />
+        <meta name="twitter:card" content="summary{{ with $imageWidth }}{{ if (and (gt . 300) (gt $imageHeight 157) (not (eq . $imageHeight))) }}_large_image{{ end }}{{ end }}" />
       {{ end }}
       <!-- /if image gt 144px -->
       <meta property="og:image:width" content="{{ $imageWidth }}" />
@@ -156,14 +152,7 @@
 
 
     <!-- /if not svg -->
-    <meta
-      property="og:image:type"
-      content="image/{{ if eq $imageExt `.svg` }}
-        svg+xml
-      {{ else }}
-        {{ replaceRE `^jpg$` `jpeg` $imageExt }}
-      {{ end }}" />
-  {{ end }}
+    <meta property="og:image:type" content="image/{{ with $imageExt }}{{ if eq . `.svg` }}svg+xml{{ else }}{{ replaceRE `^jpg$` `jpeg` . }}{{ end }}{{ end }}" />
 
 
   <!-- /if image exist -->
