@@ -20,14 +20,16 @@ Call it, as a partial in your theme head.
 {{ partial "basic-seo.html" . }}
 ```
 
-Add the following configuration to your `config/_default/params.toml` file.
+### Configuration
+
+Add the following configuration to your `config/_default/params.toml` file to set global SEO metadata:
 
 ```toml
 # SEO meta data for OpenGraph / Twitter Card
 [metadata]
 keywords = ["Boilerplate", "Hugo", "Themefisher", "GetHugoThemes"]
 description = "This is default meta description"
-author = "GetHugoThemes"
+author = "Default Author"
 image = "images/website-thumb.png" # this image will be used as fallback if a page has no image of its own
 title_suffix = "| Cool Site" # this string will be appended to the title tag
 ```
@@ -39,6 +41,8 @@ In your `config/_default/hugo.toml` file, specify your site's Twitter username:
 [social]
 twitter = 'your_twitter_handle'
 ```
+
+### Author Information
 
 Create a `data/authors.json` file to specify the authors and their Twitter handles:
 
@@ -61,7 +65,11 @@ authors: ["author1", "author2"]
 ---
 ```
 
-With these configurations, the `twitter:creator` meta tag will be set to the Twitter handles of the authors specified in the front matter of each page. If the authors parameter is missing or invalid, or if none of the specified authors are found in `authors.json`, the `twitter:creator` meta tag will fall back to the Twitter username specified in the `hugo.toml` file.
+With these configurations, the `twitter:creator` meta tag will be set to the Twitter handles of the authors specified in the front matter of each page. If the authors parameter is missing, invalid, or if none of the specified authors are found in `authors.json`, the `twitter:creator` meta tag will fall back to the Twitter username specified in the `hugo.toml` file.
+
+The `author` meta tag will be set for each author specified in the front matter of each page. If a translation for the author's name is available in the site's i18n files, it will be used; otherwise, the name from the front matter will be used directly. If the `authors` parameter is missing or empty, the `author` meta tag will fall back to the global author specified in the `params.toml` file.
+
+### Page-Specific SEO Parameters
 
 You can also specify other SEO related parameters in the front matter of each page:
 

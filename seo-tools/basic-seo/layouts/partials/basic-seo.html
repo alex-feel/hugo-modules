@@ -60,8 +60,20 @@
   content="{{ .Params.description | default site.Params.metadata.description }}" />
 
 <!-- meta author -->
-{{ with site.Params.metadata.author }}
-  <meta name="author" content="{{ . }}" />
+{{ with .Params.authors }}
+    {{ range . }}
+        {{ $authorID := printf "authors.%s" (urlize .) }}
+        {{ $translatedAuthor := i18n $authorID }}
+        {{ if $translatedAuthor }}
+            <meta name="author" content="{{ $translatedAuthor }}" />
+        {{ else }}
+            <meta name="author" content="{{ . }}" />
+        {{ end }}
+    {{ end }}
+{{ else }}
+    {{ with site.Params.metadata.author }}
+        <meta name="author" content="{{ . }}" />
+    {{ end }}
 {{ end }}
 
 
