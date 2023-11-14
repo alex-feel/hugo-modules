@@ -176,13 +176,16 @@
 {{ end }}
 
 {{ $authors := .Params.authors }}
+{{ $currentLang := .Site.Language.Lang }}
 {{ $validAuthorFound := false }}
 {{ with $authors }}
   {{ range . }}
-    {{ with index site.Data.authors . }}
-      {{ with .twitter }}
+    {{ $authorData := index site.Data.authors . }}
+    {{ with $authorData }}
+      {{ $twitterHandle := index . $currentLang "twitter" }}
+      {{ if $twitterHandle }}
         {{ $validAuthorFound = true }}
-        <meta name="twitter:creator" content="@{{ . }}" />
+        <meta name="twitter:creator" content="@{{ $twitterHandle }}" />
       {{ end }}
     {{ end }}
   {{ end }}
