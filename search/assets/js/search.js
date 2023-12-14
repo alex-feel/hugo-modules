@@ -375,10 +375,10 @@ if (hasSearchWrapper) {
     });
 
     // hide tag/category if un-available result
-    const searchInfo = document.querySelectorAll(".search-info > div");
-    if (searchInfo.length > 0) {
+    const searchResultItemTaxonomies = document.querySelectorAll(".search-result-item-taxonomies > div");
+    if (searchResultItemTaxonomies.length > 0) {
       // hide tag/category if there is no result
-      searchInfo.forEach((el) => {
+      searchResultItemTaxonomies.forEach((el) => {
         if (el.innerText.includes("nomatch") || el.innerText == "") {
           el.classList.add("hidden");
         }
