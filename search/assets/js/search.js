@@ -196,7 +196,7 @@ if (hasSearchWrapper) {
 
             if (selectedIndex !== -1) {
               let selectedLink = resItems[selectedIndex]
-                .getElementsByClassName("search-title")[0]
+                .getElementsByClassName("search-result-item-title")[0]
                 .getAttribute("href");
               window.location.href = selectedLink;
             }
