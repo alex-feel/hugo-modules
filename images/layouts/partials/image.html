@@ -1,9 +1,13 @@
-{{ $imagePath:= .Src }}
 {{ $image:= . }}
+{{ $imagePath:= .Src }}
 {{ $class:= .Class }}
 {{ $size:= .Size }}
-{{ $resize:= .Resize | default true }}
 {{ $alt:= .Alt }}
+{{ $displayXL:= .DisplayXL | default "1200x" }}
+{{ $displayLG:= .DisplayLG | default "992x" }}
+{{ $displayMD:= .DisplayMD | default "768x" }}
+{{ $displaySM:= .DisplaySM | default "576x" }}
+{{ $resize:= .Resize | default true }}
 {{ $loading:= .Loading | default "lazy" }}
 {{ $context:= .Context | default . }}
 {{ $contentImage:= false }}
@@ -122,7 +126,8 @@
             src="data:image/jpeg;base64,{{ $placeholderImage.Content | base64Encode }}"
             data-src={{ $imageWebp.RelPermalink }}
           {{ else }}
-            src="{{ $imageWebp.RelPermalink }}" loading="{{ $loading }}" decoding="async"
+            src="{{ $imageWebp.RelPermalink }}" loading="{{ $loading }}"
+            decoding="async"
           {{ end }}
 
           alt="{{ $alt }}"
@@ -140,7 +145,8 @@
           {{- end -}}
           "
           fetchpriority="{{ $fetchPriority }}"
-          onerror="this.onerror='null';this.src='{{ $imageFallback.RelPermalink }}';" />
+          onerror="this.onerror='null';
+          this.src='{{ $imageFallback.RelPermalink }}';" />
 
         <!-- if image size less then 500x and size not defined -->
       {{ else if or (lt ($image.Width) 500) (not $resize) }}
@@ -180,8 +186,8 @@
             src="data:image/jpeg;base64,{{ $placeholderImage.Content | base64Encode }}"
             data-src={{ $imageWebp.RelPermalink }} alt="placeholder"
           {{ else }}
-            src="{{ $imageWebp.RelPermalink }}" loading="{{ $loading }}" decoding="async"
-            alt="{{ $alt }}"
+            src="{{ $imageWebp.RelPermalink }}" loading="{{ $loading }}"
+            decoding="async" alt="{{ $alt }}"
           {{ end }}
 
           class="{{ if $placeholder }}lazy{{ end }} {{ $class }} img"
@@ -203,16 +209,16 @@
         <!-- /if image size less then 500x and size not defined -->
 
         <!-- image processing for multiple device -->
-        {{ $imageFallback:= $image.Resize "1200x" }}
-        {{ $imageXL:= $image.Resize "1200x webp" }}
-        {{ $imageLG:= $image.Resize "992x webp" }}
-        {{ $imageMD:= $image.Resize "768x webp" }}
-        {{ $imageSM:= $image.Resize "576x webp" }}
+        {{ $imageFallback:= $image.Resize $displayXL }}
+        {{ $imageXL:= $image.Resize (add $displayXL " webp") }}
+        {{ $imageLG:= $image.Resize (add $displayLG " webp") }}
+        {{ $imageMD:= $image.Resize (add $displayMD " webp") }}
+        {{ $imageSM:= $image.Resize (add $displaySM " webp") }}
         {{ if not $webp }}
-          {{ $imageXL = $image.Resize "1200x" }}
-          {{ $imageLG = $image.Resize "992x" }}
-          {{ $imageMD = $image.Resize "768x" }}
-          {{ $imageSM = $image.Resize "576x" }}
+          {{ $imageXL = $image.Resize $displayXL }}
+          {{ $imageLG = $image.Resize $displayLG }}
+          {{ $imageMD = $image.Resize $displayMD }}
+          {{ $imageSM = $image.Resize $displaySM }}
         {{ end }}
 
 
