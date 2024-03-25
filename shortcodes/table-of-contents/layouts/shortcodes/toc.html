@@ -2,3 +2,31 @@
   <summary>{{ with i18n "toc" }}{{ . }}{{ else }}Table Of Contents{{ end }}</summary>
   {{ .Page.TableOfContents }}
 </details>
+
+<script type="text/javascript" defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const navbarFixed = {{ with site.Params.navbar_fixed }}{{ . | jsonify }}{{ else }}false{{ end }};
+    const header = document.querySelector(".header");
+
+    document.querySelectorAll('.table-of-content a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        const id = href.substring(href.indexOf('#') + 1);
+        const targetElement = document.getElementById(id);
+
+        if (targetElement) {
+          e.preventDefault();
+
+          let offset = navbarFixed && header ? header.offsetHeight : 0;
+          const elementPosition = targetElement.offsetTop;
+          const offsetPosition = elementPosition - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });
+</script>
