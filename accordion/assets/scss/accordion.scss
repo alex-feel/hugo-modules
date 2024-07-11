@@ -38,3 +38,7 @@
 .accordion.active .accordion-icon {
   transform: rotate(0deg);
 }
+
+.accordion.active .accordion-content {
+  max-height: max-content;
+}
