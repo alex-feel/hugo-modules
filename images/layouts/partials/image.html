@@ -15,6 +15,7 @@
 {{ $command:= .Command | default "Resize" }}
 {{ $placeholder:= .Placeholder | default false }}
 {{ $placeholderQuality:= "40x q20" }}
+{{ $fetchPriority:= .FetchPriority | default "low" }}
 
 
 <!-- check content image  -->
@@ -34,13 +35,14 @@
 <!-- image static/CDN -->
 {{ if or (hasPrefix $imagePath "http") (fileExists (add `static/` (string $imagePath))) }}
   <img
-    loading="{{ .Loading }}"
+    loading="{{ $loading }}"
     decoding="async"
     src="{{ $imagePath | absURL }}"
-    alt="{{ .Alt }}"
+    alt="{{ $alt }}"
     class="{{ $class }} img"
+    width="{{ $width }}"
     height="{{ $height }}"
-    width="{{ $width }}" />
+    fetchpriority="{{ $fetchPriority }}" />
 {{ else }}
   <!-- /image cdn -->
 
@@ -73,12 +75,13 @@
     {{ if or (eq $imageExt `.gif`) (eq $imageExt `.svg`) }}
       <img
         src="{{ $image.RelPermalink }}"
-        loading="{{$loading}}"
+        loading="{{ $loading }}"
         decoding="async"
-        alt="{{ .Alt }}"
+        alt="{{ $alt }}"
         class="{{ $class }} img"
         width="{{ $width }}"
-        height="{{ $height }}" />
+        height="{{ $height }}"
+        fetchpriority="{{ $fetchPriority }}" />
     {{ else }}
       <!-- single image -->
       {{ if $size }}
@@ -121,10 +124,10 @@
             src="data:image/jpeg;base64,{{ $placeholderImage.Content | base64Encode }}"
             data-src={{ $imageWebp.RelPermalink }}
           {{ else }}
-            src="{{ $imageWebp.RelPermalink }}" loading="{{$loading}}" decoding="async"
+            src="{{ $imageWebp.RelPermalink }}" loading="{{ $loading }}" decoding="async"
           {{ end }}
 
-          alt="{{ .Alt }}"
+          alt="{{ $alt }}"
           class="{{ if $placeholder }}lazy{{ end }} {{ $class }} img"
           width="{{- with $width -}}
             {{- . -}}
@@ -138,6 +141,7 @@
             {{- $imageWebp.Height -}}
           {{- end -}}
           "
+          fetchpriority="{{ $fetchPriority }}"
           onerror="this.onerror='null';this.src='{{ $imageFallback.RelPermalink }}';" />
 
         <!-- if image size less then 500x and size not defined -->
@@ -178,8 +182,8 @@
             src="data:image/jpeg;base64,{{ $placeholderImage.Content | base64Encode }}"
             data-src={{ $imageWebp.RelPermalink }} alt="placeholder"
           {{ else }}
-            src="{{ $imageWebp.RelPermalink }}" loading="{{$loading}}" decoding="async"
-            alt="{{ .Alt }}"
+            src="{{ $imageWebp.RelPermalink }}" loading="{{ $loading }}" decoding="async"
+            alt="{{ $alt }}"
           {{ end }}
 
           class="{{ if $placeholder }}lazy{{ end }} {{ $class }} img"
@@ -195,6 +199,7 @@
             {{- $imageWebp.Height -}}
           {{- end -}}
           "
+          fetchpriority="{{ $fetchPriority }}"
           onerror="this.onerror='null';this.src='{{ $image.RelPermalink }}';" />
       {{ else }}
         <!-- /if image size less then 500x and size not defined -->
@@ -254,14 +259,15 @@
               src="data:image/jpeg;base64,{{ $placeholderImage.Content | base64Encode }}"
               data-src={{ $imageFallback.RelPermalink }}
             {{ else }}
-              loading="{{$loading}}" decoding="async"
+              loading="{{ $loading }}" decoding="async"
               src="{{ $imageFallback.RelPermalink }}"
             {{ end }}class="{{ if $placeholder }}
               lazy
             {{ end }} {{ $class }} img"
-            alt="{{ .Alt }}"
+            alt="{{ $alt }}"
             width="{{ $image.Width }}"
-            height="{{ $image.Height }}" />
+            height="{{ $image.Height }}"
+            fetchpriority="{{ $fetchPriority }}" />
         </picture>
       {{ end }}
       <!-- end image processing -->
