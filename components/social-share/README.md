@@ -33,6 +33,7 @@ Available parameters:
 * `Reddit`: share reddit | default true
 * `Whatsapp`: share whatsapp | default true
 * `Telegram`: share telegram | default true
+* `Linkedin`: share linkedin | default true 
 * `ImageURL` URL of the image to share
 
 ```html
