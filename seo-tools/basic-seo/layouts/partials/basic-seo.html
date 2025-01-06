@@ -197,7 +197,7 @@
 {{ end }}
 
 {{ if not $validAuthorFound }}
-  {{ with site.Social.twitter }}
+  {{ with .Site.Params.twitter }}
     <meta name="twitter:creator" content="@{{ . }}" />
   {{ end }}
 {{ end }}
