@@ -176,7 +176,7 @@
 <meta name="twitter:title" content="{{ $title }}" />
 <meta name="twitter:description" content="{{ $description }}" />
 
-{{ with site.Social.twitter }}
+{{ with .Site.Params.twitter }}
   <meta name="twitter:site" content="@{{ . }}" />
 {{ end }}
 
