@@ -18,17 +18,17 @@
 {{- $date:= time.Format ":date_long" .PublishDate -}}
 
 {{- if .Params.image -}}
-  {{- $.Scratch.Set "image" (partial "searchImage" (dict "Src" .Params.image "Size" "420x" "Command" "Resize")) -}}
-  {{- $.Scratch.Set "imageSM" (partial "searchImage" (dict "Src" .Params.image "Size" "100x100" "Command" "Fill")) -}}
+  {{- $.Store.Set "image" (partial "searchImage" (dict "Src" .Params.image "Size" "420x" "Command" "Resize")) -}}
+  {{- $.Store.Set "imageSM" (partial "searchImage" (dict "Src" .Params.image "Size" "100x100" "Command" "Fill")) -}}
 {{- else if .Params.images -}}
   {{- range first 1 .Params.images -}}
-  {{- $.Scratch.Set "image" (partial "searchImage" (dict "Src" . "Size" "420x" "Command" "Resize")) -}}
-  {{- $.Scratch.Set "imageSM" (partial "searchImage" (dict "Src" . "Size" "100x100" "Command" "Fill")) -}}
+  {{- $.Store.Set "image" (partial "searchImage" (dict "Src" . "Size" "420x" "Command" "Resize")) -}}
+  {{- $.Store.Set "imageSM" (partial "searchImage" (dict "Src" . "Size" "100x100" "Command" "Fill")) -}}
   {{- end -}}
 {{- end -}}
 
-{{- $image:= $.Scratch.Get "image" -}}
-{{- $imageSM:= $.Scratch.Get "imageSM" -}}
+{{- $image:= $.Store.Get "image" -}}
+{{- $imageSM:= $.Store.Get "imageSM" -}}
 
 {
   "section": "{{.Section | humanize}}",

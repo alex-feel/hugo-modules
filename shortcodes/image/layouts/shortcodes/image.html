@@ -15,15 +15,15 @@
 
 <!-- image position -->
 {{ if eq $position `center` }}
-  {{ .Scratch.Set "position" "img-center" }}
+  {{ .Store.Set "position" "img-center" }}
 {{ else if eq $position `left` }}
-  {{ .Scratch.Set "position" "img-left" }}
+  {{ .Store.Set "position" "img-left" }}
 {{ else if eq $position `right` }}
-  {{ .Scratch.Set "position" "img-right" }}
+  {{ .Store.Set "position" "img-right" }}
 {{ else if eq $position `float-left` }}
-  {{ .Scratch.Set "position" "img-float-left" }}
+  {{ .Store.Set "position" "img-float-left" }}
 {{ else if eq $position `float-right` }}
-  {{ .Scratch.Set "position" "img-float-right" }}
+  {{ .Store.Set "position" "img-float-right" }}
 {{ end }}
 
 
@@ -32,7 +32,7 @@
   <!-- cdn image figure -->
   {{ if $caption }}
     <figure
-      class="{{ .Scratch.Get `position` }}"
+      class="{{ .Store.Get `position` }}"
       role="group"
       aria-describedby="caption-{{ $caption | markdownify }}">
       <img
@@ -56,7 +56,7 @@
       decoding="async"
       src="{{ $imagePath | absURL }}"
       alt="{{ $alt }}"
-      class="{{ $class }} {{ .Scratch.Get `position` }} {{ if eq $zoomable `true` }}glightbox{{ end }}"
+      class="{{ $class }} {{ .Store.Get `position` }} {{ if eq $zoomable `true` }}glightbox{{ end }}"
       width="{{ $width }}"
       height="{{ $height }}" />
   {{ end }}
@@ -71,12 +71,12 @@
   {{ if or $contentImage $assetImage }}
     <!-- content or assets folder detection -->
     {{ if $contentImage }}
-      {{ .Scratch.Set "image-exists" $contentImage }}
+      {{ .Store.Set "image-exists" $contentImage }}
     {{ else if $assetImage }}
-      {{ .Scratch.Set "image-exists" (resources.Get $imagePath) }}
+      {{ .Store.Set "image-exists" (resources.Get $imagePath) }}
     {{ end }}
 
-    {{ $image:= .Scratch.Get "image-exists" }}
+    {{ $image:= .Store.Get "image-exists" }}
 
 
     <!-- image extension -->
@@ -85,19 +85,19 @@
 
     <!-- image height, width (if not svg) -->
     {{ if eq $imageExt `.svg` }}
-      {{ .Scratch.Set "image-height" "" }}
-      {{ .Scratch.Set "image-width" "" }}
+      {{ .Store.Set "image-height" "" }}
+      {{ .Store.Set "image-width" "" }}
     {{ else }}
-      {{ .Scratch.Set "image-height" $image.Height }}
-      {{ .Scratch.Set "image-width" $image.Width }}
+      {{ .Store.Set "image-height" $image.Height }}
+      {{ .Store.Set "image-width" $image.Width }}
     {{ end }}
-    {{ $imageHeight:= .Scratch.Get "image-height" }}
-    {{ $imageWidth:= .Scratch.Get "image-width" }}
+    {{ $imageHeight:= .Store.Get "image-height" }}
+    {{ $imageWidth:= .Store.Get "image-width" }}
 
 
     <!-- checking gif/svg image -->
     {{ if or (eq $imageExt `.gif`) (eq $imageExt `.svg`) }}
-      {{ .Scratch.Set `image` $image.RelPermalink }}
+      {{ .Store.Set `image` $image.RelPermalink }}
     {{ else }}
       <!-- image processing -->
       {{ $options:= add (add (add (add (string ($width | default $imageWidth)) "x") (string ($height | default $imageHeight))) " webp ") (string $option) }}
@@ -111,16 +111,16 @@
 
       <!-- image Fit -->
       {{ if eq $command `Fit` }}
-        {{ .Scratch.Set `image` ($image.Fit $options).RelPermalink }}
-        {{ .Scratch.Set `fallback` ($image.Fit (replace $options `webp` ``)).RelPermalink }}
+        {{ .Store.Set `image` ($image.Fit $options).RelPermalink }}
+        {{ .Store.Set `fallback` ($image.Fit (replace $options `webp` ``)).RelPermalink }}
         <!-- image Fill -->
       {{ else if eq $command `Fill` }}
-        {{ .Scratch.Set `image` ($image.Fill $options).RelPermalink }}
-        {{ .Scratch.Set `fallback` ($image.Fill (replace $options `webp` ``)).RelPermalink }}
+        {{ .Store.Set `image` ($image.Fill $options).RelPermalink }}
+        {{ .Store.Set `fallback` ($image.Fill (replace $options `webp` ``)).RelPermalink }}
         <!-- image Resize -->
       {{ else }}
-        {{ .Scratch.Set `image` ($image.Resize $options).RelPermalink }}
-        {{ .Scratch.Set `fallback` ($image.Resize (replace $options `webp` ``)).RelPermalink }}
+        {{ .Store.Set `image` ($image.Resize $options).RelPermalink }}
+        {{ .Store.Set `fallback` ($image.Resize (replace $options `webp` ``)).RelPermalink }}
       {{ end }}
 
     {{ end }}
@@ -129,7 +129,7 @@
     <!-- image figure -->
     {{ if $caption }}
       <figure
-        class="{{ .Scratch.Get `position` }}"
+        class="{{ .Store.Get `position` }}"
         role="group"
         aria-describedby="caption-{{ $caption | markdownify }}">
         <img
@@ -139,9 +139,9 @@
           class="{{ $class }} {{ if eq $zoomable `true` }}glightbox{{ end }}"
           width="{{ $width | default $imageWidth }}"
           height="{{ $height | default $imageHeight }}"
-          src="{{ .Scratch.Get `image` }}"
+          src="{{ .Store.Get `image` }}"
           alt="{{ $alt }}"
-          onerror="this.onerror='null';this.src='{{ .Scratch.Get `fallback` }}'" />
+          onerror="this.onerror='null';this.src='{{ .Store.Get `fallback` }}'" />
         <figcaption id="caption-{{ $caption | markdownify }}">
           {{ $caption | markdownify }}
         </figcaption>
@@ -152,12 +152,12 @@
         title="{{ $title }}"
         loading="lazy"
         decoding="async"
-        class="{{ $class }} {{ .Scratch.Get `position` }} {{ if eq $zoomable `true` }}glightbox{{ end }}"
+        class="{{ $class }} {{ .Store.Get `position` }} {{ if eq $zoomable `true` }}glightbox{{ end }}"
         width="{{ $width | default $imageWidth }}"
         height="{{ $height | default $imageHeight }}"
-        src="{{ .Scratch.Get `image` }}"
+        src="{{ .Store.Get `image` }}"
         alt="{{ $alt }}"
-        onerror="this.onerror='null';this.src='{{ .Scratch.Get `fallback` }}'" />
+        onerror="this.onerror='null';this.src='{{ .Store.Get `fallback` }}'" />
     {{ end }}
 
   {{ else }}
@@ -170,8 +170,8 @@
 {{ end }}
 <!-- /check cdn image -->
 
-{{ .Page.Scratch.Add "lightbox" 1 }}
-{{ $lightbox:= .Page.Scratch.Get "lightbox" }}
+{{ .Page.Store.Add "lightbox" 1 }}
+{{ $lightbox:= .Page.Store.Get "lightbox" }}
 {{ if eq $lightbox 1 }}
 <script>window.addEventListener("load", (e) => {const lightbox = GLightbox()});</script>
 {{ end }}

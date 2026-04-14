@@ -16,8 +16,8 @@
 </div>
 
 <!-- assets -->
-{{ .Page.Scratch.Add "youtubeLite" 1 }}
-{{ $youtubeLite:= .Page.Scratch.Get "youtubeLite" }}
+{{ .Page.Store.Add "youtubeLite" 1 }}
+{{ $youtubeLite:= .Page.Store.Get "youtubeLite" }}
 {{ if eq $youtubeLite 1 }}
 <script type="application/javascript">
 {{ $youtubeLiteScript:= resources.Get "js/youtube-lite.js" | minify }}

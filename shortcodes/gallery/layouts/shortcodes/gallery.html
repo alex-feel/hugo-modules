@@ -132,8 +132,8 @@
 <!-- end of checking image directory -->
 
 <!-- gallery masonry script -->
-{{ .Page.Scratch.Add "gallery" 1 }}
-{{ $gallery:= .Page.Scratch.Get "gallery" }}
+{{ .Page.Store.Add "gallery" 1 }}
+{{ $gallery:= .Page.Store.Get "gallery" }}
 {{ if eq $gallery 1 }}
   <script>
     window.addEventListener("load", (e) => {

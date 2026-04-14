@@ -123,12 +123,12 @@
   {{ if or $contentImage $assetImage }}
     <!-- content or assets folder detection -->
     {{ if $contentImage }}
-      {{ .Scratch.Set "image-exists" $contentImage }}
+      {{ .Store.Set "image-exists" $contentImage }}
     {{ else if $assetImage }}
-      {{ .Scratch.Set "image-exists" (resources.Get $imagePath) }}
+      {{ .Store.Set "image-exists" (resources.Get $imagePath) }}
     {{ end }}
 
-    {{ $image:= .Scratch.Get "image-exists" }}
+    {{ $image:= .Store.Get "image-exists" }}
 
 
     <!-- image extension -->
@@ -181,11 +181,11 @@
 {{ end }}
 
 {{ $authors := .Params.authors }}
-{{ $currentLang := .Site.Language.Lang }}
+{{ $currentLang := .Site.Language.Name }}
 {{ $validAuthorFound := false }}
 {{ with $authors }}
   {{ range . }}
-    {{ $authorData := index site.Data.authors . }}
+    {{ $authorData := index hugo.Data.authors . }}
     {{ with $authorData }}
       {{ $twitterHandle := index . $currentLang "twitter" }}
       {{ if $twitterHandle }}

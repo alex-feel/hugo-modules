@@ -3,7 +3,7 @@
 
 <div class="tab" data-tab-group="{{ $groupId }}">
   <ul class="tab-nav" data-tab-nav>
-    {{ range $idx, $tab := .Scratch.Get "tabs" }}
+    {{ range $idx, $tab := .Store.Get "tabs" }}
       <li
         class="tab-nav-item {{ cond (eq $idx 0) `active` `` }}"
         data-tab="{{ .name | urlize }}" tabindex="{{ cond (eq $idx 0) `0` `-1` }}">
@@ -12,7 +12,7 @@
     {{ end }}
   </ul>
   <div class="tab-content" data-tab-content>
-    {{ range $idx, $tab := .Scratch.Get "tabs" }}
+    {{ range $idx, $tab := .Store.Get "tabs" }}
       <div
         class="tab-content-panel {{ cond (eq $idx 0) `active` `` }}"
         data-tab-panel="{{ .name | urlize }}">

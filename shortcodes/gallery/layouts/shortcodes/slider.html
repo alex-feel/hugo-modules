@@ -146,8 +146,8 @@
 <!-- end of slider wrapper -->
 
 <!-- style and scripts -->
-{{ .Page.Scratch.Add "lightbox" 1 }}
-{{ $lightbox:= .Page.Scratch.Get "lightbox" }}
+{{ .Page.Store.Add "lightbox" 1 }}
+{{ $lightbox:= .Page.Store.Get "lightbox" }}
 {{ if eq $lightbox 1 }}
 <script>window.addEventListener("load", (e) => {const lightbox = GLightbox()});</script>
 {{ end }}

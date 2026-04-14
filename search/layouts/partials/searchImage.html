@@ -59,14 +59,14 @@
 
     <!-- image height, width (if not svg) -->
     {{ if eq $imageExt `.svg` }}
-      {{ .Scratch.Set "image-height" "" }}
-      {{ .Scratch.Set "image-width" "" }}
+      {{ .Store.Set "image-height" "" }}
+      {{ .Store.Set "image-width" "" }}
     {{ else }}
-      {{ .Scratch.Set "image-height" $image.Height }}
-      {{ .Scratch.Set "image-width" $image.Width }}
+      {{ .Store.Set "image-height" $image.Height }}
+      {{ .Store.Set "image-width" $image.Width }}
     {{ end }}
-    {{ $imageHeight:= .Scratch.Get "image-height" }}
-    {{ $imageWidth:= .Scratch.Get "image-width" }}
+    {{ $imageHeight:= .Store.Get "image-height" }}
+    {{ $imageWidth:= .Store.Get "image-width" }}
 
 
     <!-- gif/svg image -->

@@ -10,18 +10,18 @@
 
 <!-- checking cdn -->
 {{ if hasPrefix $videoPath "http" }}
-  {{ .Scratch.Set "video_path" $videoPath }}
+  {{ .Store.Set "video_path" $videoPath }}
 
   <!-- checking assets -->
 {{ else if fileExists (add `assets/` $videoPath) }}
-  {{ .Scratch.Set "video_path" (resources.Get $videoPath).RelPermalink }}
+  {{ .Store.Set "video_path" (resources.Get $videoPath).RelPermalink }}
 
   <!-- checking content/static -->
 {{ else }}
-  {{ .Scratch.Set "video_path" (print "/" $videoPath) }}
+  {{ .Store.Set "video_path" (print "/" $videoPath) }}
 {{ end }}
 
-{{ $videoPath = .Scratch.Get "video_path" }}
+{{ $videoPath = .Store.Get "video_path" }}
 
 {{ if $videoPath }}
   <video

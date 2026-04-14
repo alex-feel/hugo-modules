@@ -16,8 +16,8 @@
 </div>
 
 <!-- assets -->
-{{ .Page.Scratch.Add "vimeoLite" 1 }}
-{{ $vimeoLite:= .Page.Scratch.Get "vimeoLite" }}
+{{ .Page.Store.Add "vimeoLite" 1 }}
+{{ $vimeoLite:= .Page.Store.Get "vimeoLite" }}
 {{ if eq $vimeoLite 1 }}
 <script type="application/javascript">
 {{ $vimeoLiteScript:= resources.Get "js/vimeo-lite.js" | minify }}
